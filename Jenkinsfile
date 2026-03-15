@@ -1,3 +1,8 @@
+def COLOR_MAP = [
+    'SUCCESS': 'good',
+    'FAILURE': 'danger',
+]
+
 pipeline {
     agent any
     tools {
@@ -76,7 +81,18 @@ pipeline {
         ]
      )
             }
+
         }
 
+
+    }
+
+}
+post {
+    always {
+        script {
+            echo 'Sending build status to Slack...'
+            slackSend channel: '#jenkinscicd', color: COLOR_MAP[currentBuild.currentResult], message: "*${currentBuild.currentResult}:* Job ${env.JOB_NAME} \n More info at : ${env.BUILD_NUMBER} ${env.BUILD_URL}"
+        }
     }
 }
