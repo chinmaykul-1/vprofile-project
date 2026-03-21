@@ -107,6 +107,14 @@ pipeline {
                 }
             }
         }
+        stage('force new deployment in ecs')
+        {
+            steps{
+                withAWS(credentials: 'awscreds_jenkinscicd', region: 'ap-south-1') {
+                    sh 'aws ecs update-service --cluster vprofile --service vprofile-app-service-oexj6url --force-new-deployment '
+                }
+                 }
+        }
 
 
     }
