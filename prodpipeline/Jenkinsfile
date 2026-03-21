@@ -14,7 +14,7 @@ pipeline {
         {
             steps{
                 withAWS(credentials: 'awscreds_jenkinscicd', region: 'ap-south-1') {
-                    sh 'aws ecs update-service --cluster vprofile-prod --service vprofile-app-service-prodl --force-new-deployment '
+                    sh 'aws ecs update-service --cluster vprofile-prod --service vprofile-app-service-prod --force-new-deployment '
                 }
                  }
         }
