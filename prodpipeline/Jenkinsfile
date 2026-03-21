@@ -22,6 +22,9 @@ pipeline {
         NEXUS_LOGIN = 'nexuscreds'
         SONARSERVER = 'sonarserver'
         SONARSCANNER = 'sonarscanner'
+        registryCredentials = 'ecr:ap-south-1:awscreds_jenkinscicd'
+        appreRegistry = '190045319870.dkr.ecr.ap-south-1.amazonaws.com/vprofileappimg'
+        vprofileRegistry = 'https://190045319870.dkr.ecr.ap-south-1.amazonaws.com'
     }
 
     stages {
